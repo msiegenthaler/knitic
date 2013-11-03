@@ -169,8 +169,8 @@ public:
   void sendCurrentPixelArray(){
     Serial.println(lf);
     for(int i=0; i<200; i++){
-      pixelBin[i] = receivedBin[i];
-      Serial.print(String(pixelBin[i]));
+      mysolenoids->pixelBin[i] = receivedBin[i];
+      Serial.print(String(mysolenoids->pixelBin[i]));
     }
     Serial.println(lf);
   }
