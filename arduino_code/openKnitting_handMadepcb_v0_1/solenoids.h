@@ -12,16 +12,12 @@ private:
   byte myDataOut;
   int amegaPinsArray[16];
   int ledArray[16];
+  boolean solenoidstateOn[16];
 
 public:
   int pixelBin[256];
-  int currentPixState;
-  int currentStitchSetup;
-  int currentSolenoidIDSetup;
   boolean changed;
   boolean solenoidstate[16];
-  boolean solenoidstateOn[16];
-  String _16solenoids;
   boolean sectionPosition;
 
 public:

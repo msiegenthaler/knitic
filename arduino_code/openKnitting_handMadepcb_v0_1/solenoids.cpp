@@ -18,11 +18,10 @@ void solenoids::setup(endLines* _myEndlines,encoders* _myEncoders){
   sectionPosition = false;
   myEndlines = _myEndlines;
   myEncoders = _myEncoders;
-  _16solenoids = "0000000000000000";
   changed = false;
-  for (int i=0;i<16;i++) {
-    solenoidstate[i] = (_16solenoids[i] != '0');
-    solenoidstateOn[i] = (_16solenoids[i] != '0');
+  for (int i=0; i<16; i++) {
+    solenoidstate[i] = 0;
+    solenoidstateOn[i] = 0;
   }
 }
 
@@ -40,15 +39,14 @@ void solenoids::loop() {
           // validated
           i = abs(pos)%16;
         }
-        currentStitchSetup = pos-16;
 
-        currentSolenoidIDSetup = i;
+        int currentStitchSetup = pos-16;
         if (currentStitchSetup >= 0 && currentStitchSetup < 254) {
-          currentPixState = pixelBin[currentStitchSetup];
-          if (solenoidstateOn[i] != (currentPixState==1) ){
+          int currentPixState = pixelBin[currentStitchSetup];
+          if (solenoidstateOn[i] != (currentPixState == 1) ){
             digitalWrite(amegaPinsArray[i], currentPixState);
             digitalWrite(ledArray[i], currentPixState);
-            solenoidstateOn[i] = (currentPixState==1);
+            solenoidstateOn[i] = (currentPixState == 1);
           }
         }
       }
@@ -63,14 +61,14 @@ void solenoids::loop() {
         } else {
           i = abs(pos) % 16; // -8
         }
-        currentStitchSetup = pos-40;
-        currentSolenoidIDSetup = i;
+
+        int currentStitchSetup = pos-40;
         if (currentStitchSetup >= 0 && currentStitchSetup < 254) {
-          currentPixState = pixelBin[currentStitchSetup];
-          if( solenoidstateOn[i] != (currentPixState==1)) {
+          int currentPixState = pixelBin[currentStitchSetup];
+          if( solenoidstateOn[i] != (currentPixState == 1)) {
             digitalWrite(amegaPinsArray[i], currentPixState);
             digitalWrite(ledArray[i], currentPixState);
-            solenoidstateOn[i] = (currentPixState==1);
+            solenoidstateOn[i] = (currentPixState == 1);
           }
         }
       }
