@@ -7,17 +7,12 @@
  *
  */
 
-#define arduinoTypeDUE "due"
-//#define arduinoTypeUNO "uno"
-#define totalArrayFromSelenoids 16
 
 #include "defined_knitic.h"
 #include "knitic.h"
 
 #define attachInterrupEncoders interrupEncoders
-//---------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------
-// Class declaration
+
 encoders myEncoders;
 endLines myEndlines;
 solenoids mysolenoids;
@@ -44,6 +39,7 @@ void loop() {
   // Receive solenoids from computer
   //myCommunicator.receiveRealtimeFromComputer();
   myCommunicator.receiveAllLine();
+
   // Get data from sensors and send to computer in case solenoids not move
 #ifndef attachInterrupEncoders
   myEncoders.loopNormal();
