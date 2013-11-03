@@ -56,38 +56,6 @@ public:
     last_8segmentEncoder = 0;
   }
 
-  void calculateDirection(){
-    lastDirectionEncoders = directionEncoders;
-    directionEncoders = 0;
-    if(digitalRead(encoder0PinA)== HIGH){ 
-      // directionEncoders is ON for encoder A
-      //Serial.println("A:HIGH ENCODER");
-      directionEncoders += 1; 
-    }
-    else{ 
-      // directionEncoders is OFF for encoder A
-      directionEncoders += 0;  
-      //Serial.println("A:LOW ENCODER");
-    }
-    if(digitalRead(encoder0PinB)== HIGH){ 
-      // directionEncoders is ON for encoder B
-      directionEncoders +=3;
-      //Serial.println("B:HIGH ENCODER");
-    }
-    else{ 
-      directionEncoders +=5;
-      //Serial.println("B:LOW ENCODER");
-    }
-    last_8segmentEncoder = _8segmentEncoder;
-    _8segmentEncoder = (digitalRead(encoder0PinC)==HIGH);
-    /*
-    Serial.print(lastDirectionEncoders);
-    Serial.print("-");
-    Serial.println(directionEncoders);
-    Serial.print("-");
-    Serial.println(_8segmentEncoder);
-    */
-  }
 
   // Use call from normal loop
   void loopNormal(){
@@ -205,6 +173,40 @@ public:
     }
   }
 
+
+private:
+  void calculateDirection(){
+    lastDirectionEncoders = directionEncoders;
+    directionEncoders = 0;
+    if(digitalRead(encoder0PinA)== HIGH) {
+      // directionEncoders is ON for encoder A
+      //Serial.println("A:HIGH ENCODER");
+      directionEncoders += 1;
+    }
+    else {
+      // directionEncoders is OFF for encoder A
+      directionEncoders += 0;
+      //Serial.println("A:LOW ENCODER");
+    }
+    if(digitalRead(encoder0PinB)== HIGH) {
+      // directionEncoders is ON for encoder B
+      directionEncoders +=3;
+      //Serial.println("B:HIGH ENCODER");
+    }
+    else {
+      directionEncoders +=5;
+      //Serial.println("B:LOW ENCODER");
+    }
+    last_8segmentEncoder = _8segmentEncoder;
+    _8segmentEncoder = (digitalRead(encoder0PinC)==HIGH);
+    /*
+    Serial.print(lastDirectionEncoders);
+    Serial.print("-");
+    Serial.println(directionEncoders);
+    Serial.print("-");
+    Serial.println(_8segmentEncoder);
+    */
+  }
 };
 #endif
 
