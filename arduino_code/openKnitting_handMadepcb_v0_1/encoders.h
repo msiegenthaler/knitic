@@ -20,20 +20,23 @@ table encoder position an values id
 #include "defined_knitic.h"
 
 class encoders{
-public:
-    short directionEncoders;
+private:
+  short directionEncoders;
   short lastDirectionEncoders;
-  int encoder1Pos; 
   int encoder4Pos;
-  int lastencoder1Pos;
   int lastencoder4Pos;
+  boolean last_8segmentEncoder;
+
+public:
+  int encoder1Pos;
+  int lastencoder1Pos;
   int stitch;
   int lastStitch;
   int headDirection;
+  boolean _8segmentEncoder;
+public:
   //boolean lastState8segmentEncoder;
   //boolean state8segmentEncoder;
-  boolean _8segmentEncoder;
-  boolean last_8segmentEncoder;
   encoders(){
   }
 
