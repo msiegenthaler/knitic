@@ -130,7 +130,8 @@ void receiveSerial() {
     serialAvailableBuffer = myPort.available();
     while (myPort!=null && myPort.available ()>0  && (millis()-timeStart<5 )) {
       //println("Receive Serial___"+Integer.toString(myPort.available()));
-      myString = myPort.readStringUntil(lf);
+      byte[] readBytes = myPort.readBytesUntil(lf);
+      myString = readBytes != null ? new String(readBytes) : null;
       // PIXELS stored now in Arduino
       try {
         if (myString != null && myString.length()>200) {
