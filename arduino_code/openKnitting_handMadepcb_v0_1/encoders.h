@@ -35,13 +35,10 @@ public:
   int headDirection;
   boolean _8segmentEncoder;
 public:
-  //boolean lastState8segmentEncoder;
-  //boolean state8segmentEncoder;
-  encoders(){
-  }
 
-  ~encoders(){
-  }
+  encoders() {}
+
+  ~encoders() {}
 
   void setup(){
     pinMode(encoder0PinA,INPUT);
@@ -150,7 +147,7 @@ public:
         */
       }
     }
-    
+
     if( encoder4Pos !=0 ){ 
       encoder1Pos = encoder4Pos/4;
       stitch = (encoder1Pos)-28; 
@@ -208,12 +205,6 @@ public:
     }
   }
 
-
-
 };
 #endif
-
-
-
-
 
